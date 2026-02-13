@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu - Snack-2D</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <nav class="navbar navbar-expand-lg custom-navbar">
+  <div class="container">
+
+   <a class="navbar-brand" href="#">
+  <img src="image/WhatsApp-Image-2026-02-13-at-13.png" alt="Snack-2D Logo" class="logo-img">
+</a>
+
+    <!-- Bouton mobile -->
+    <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Liens -->
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+      
+      <ul class="navbar-nav ms-auto me-3">
+        <li class="nav-item">
+          <a class="nav-link text-white " href="index.html">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white active" href="#">Menu</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="Propos.html">À propos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="contact.html">Contact</a>
+        </li>
+      </ul>
+
+      <!-- Bouton Panier -->
+<button id="btnPanier" class="btn btn-light position-relative" onclick="togglePanier()">
+  🛒 Panier
+  <span id="badgePanier" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    0
+  </span>
+</button>
+
+<!-- Contenu du panier (overlay ou dropdown simple) -->
+<div id="panierOverlay" style="display:none; position:absolute; right:10px; top:60px; width:300px; background:#fff; border:1px solid #ccc; padding:10px; z-index:100;">
+  <h5>Votre panier</h5>
+  <ul id="listePanier"></ul>
+  <p>Total : <span id="total">0 FCFA</span></p>
+  <button class="btn btn-success w-100" onclick="commanderWhatsApp()">Commander sur WhatsApp</button>
+</div>
+
+    </div>
+  </div>
+</nav>
+<!-- ===== SECTION MENU ===== -->
+<section class="menu-section py-5">
+  <div class="container">
+
+    <h2 class="text-center mb-5 fw-bold text-success">Notre Menu</h2>
+
+    <div class="row g-4">
+
+      <!-- PLAT 1 -->
+      <div class="col-md-4 col-sm-6">
+  <div class="card menu-card h-100 shadow-sm">
+    <img src="image/burgerc.jpg" class="card-img-top" alt="">
+    <div class="card-body text-center">
+      <h5 class="card-title">Burger Classique</h5>
+      <p class="card-text">Pain frais, steak, salade, fromage.</p>
+      <p class="price" data-prix="1500">1 500 FCFA</p>
+      <button class="btn btn-success w-100" data-nom="Burger Classique" data-prix="1500" onclick="ajouterAuPanier(this)">Ajouter au panier</button>
+    </div>
+  </div>
+</div>
+      <!-- PLAT 2 -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card menu-card h-100 shadow-sm">
+          <img src="image/TACOS.jpg" class="card-img-top" alt="">
+          <div class="card-body text-center">
+            <h5 class="card-title">Tacos Simple</h5>
+            <p class="card-text">Tortilla,Viande, Frites, fromage</p>
+            <p class="price" data-prix="2000">2 000 FCFA</p>
+            <button class="btn btn-success w-100" data-nom="Tacos simple" data-prix="2000" onclick="ajouterAuPanier(this)">Commandez</button>
+          </div>
+        </div>
+      </div>
+      <!-- PLAT 1 -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card menu-card h-100 shadow-sm">
+          <img src="image/tacospane.jpg" class="card-img-top" alt="">
+          <div class="card-body text-center">
+            <h5 class="card-title">Tacos Pane</h5>
+            <p class="card-text"> Tortilla, steak, salade, fromage</p>
+            <p class="price" data-prix="2500">2 500 FCFA</p>
+            <button class="btn btn-success w-100" data-nom="Tacos pane" data-prix="2500" onclick="ajouterAuPanier(this)">Commandez</button>
+          </div>
+        </div>
+      </div>
+      <!-- PLAT 1 -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card menu-card h-100 shadow-sm">
+          <img src="image/fatayasimp.jpg " class="card-img-top" alt="">
+          <div class="card-body text-center">
+            <h5 class="card-title">Fataya</h5>
+            <p class="card-text">pâte, frites, oeuf</p>
+            <p class="price" data-prix="500">5 00 FCFA</p>
+            <button class="btn btn-success w-100" data-nom="fataya simple" data-prix="500" onclick="ajouterAuPanier(this)">Commandez</button>
+          </div>
+        </div>
+      </div>
+      <!-- PLAT 1 -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card menu-card h-100 shadow-sm">
+          <img src="image/fataya+.jpg" class="card-img-top" alt="">
+          <div class="card-body text-center">
+            <h5 class="card-title">Fataya +</h5>
+            <p class="card-text">pâte,frites,fromage</p>
+            <p class="price" data-prix="800">8 00 FCFA</p>
+            <button class="btn btn-success w-100" data-nom="fataya simple" data-prix="800" onclick="ajouterAuPanier(this)">Commandez</button>
+          </div>
+        </div>
+      </div>
+      <!-- PLAT 1 -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card menu-card h-100 shadow-sm">
+          <img src="image/fatayaroyal.jpg" class="card-img-top" alt="">
+          <div class="card-body text-center">
+            <h5 class="card-title">Fataya Royale</h5>
+            <p class="card-text">pâte,frites,fromage,viande</p>
+            <p class="price" data-prix="800" >1 000 FCFA</p>
+            <button class="btn btn-success w-100" data-nom="fataya simple" data-prix="1000" onclick="ajouterAuPanier(this)">Commandez</button>
+          </div>
+        </div>
+      </div>
+      <!-- PLAT 1 -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card menu-card h-100 shadow-sm">
+          <img src="image/pizza.jpg" class="card-img-top" alt="">
+          <div class="card-body text-center">
+            <h5 class="card-title">Pizza</h5>
+            <p class="card-text">pâte, Sauce tomate, fromage, garniture</p>
+            <p class="price" data-prix="4000">4 000 FCFA</p>
+            <button class="btn btn-success w-100" data-nom="Pizza" data-prix="4000" onclick="ajouterAuPanier(this)">Commandez</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PLAT 2 -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card menu-card h-100 shadow-sm">
+          <img src="image/poutine.jpg" class="card-img-top" alt="">
+          <div class="card-body text-center">
+            <h5 class="card-title">Poutine</h5>
+            <p class="card-text">Viande, frites, fromage.</p>
+            <p class="price" data-prix="4000">4 000 FCFA</p>
+            <button class="btn btn-success w-100"  data-nom="Poutine" data-prix="4000" onclick="ajouterAuPanier(this)">Commandez</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PLAT 3 -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card menu-card h-100 shadow-sm">
+          <img src="image/jus.jpg" class="card-img-top" alt="">
+          <div class="card-body text-center">
+            <h5 class="card-title">jus</h5>
+            <p class="card-text">Eau,Sucre naturels,vitamines</p>
+            <p class="price" data-prix="500">5 00 FCFA</p>
+            <button class="btn btn-success w-100" data-nom="jus" data-prix="500" onclick="ajouterAuPanier(this)">Commandez</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="bg-dark text-white text-center py-4">
+  <p class="mb-0">© 2026 Snack-2D | Tous droits réservés</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="scripte.js"></script>
+</body>
+</html>
