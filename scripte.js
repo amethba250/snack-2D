@@ -76,7 +76,7 @@ function commanderWhatsApp() {
 
     message += `Total : ${total} FCFA`;
 
-    let numero = "221773625905";
+    let numero = "221781753084";
     let url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(message);
 
     window.open(url, "_blank");
